@@ -17,6 +17,10 @@ if ActiveRecord.version.release >= Gem::Version.new('6.1')
   require_relative 'apartment/active_record/internal_metadata'
 end
 
+if ActiveStorage.version.release >= Gem::Version.new('7.0')
+  require_relative 'apartment/active_storage/set_blob'
+end
+
 # Apartment main definitions
 module Apartment
   class << self

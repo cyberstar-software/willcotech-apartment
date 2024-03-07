@@ -16,7 +16,7 @@ AllCops:
 
 Gemspec/RequiredRubyVersion:
   Exclude:
-    - 'ros-apartment.gemspec'
+    - 'willcotech-apartment.gemspec'
 
 Metrics/BlockLength:
   Exclude:
