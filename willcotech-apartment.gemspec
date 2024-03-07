@@ -4,7 +4,7 @@ $LOAD_PATH << File.expand_path('lib', __dir__)
 require 'apartment/version'
 
 Gem::Specification.new do |s|
-  s.name = 'ros-apartment'
+  s.name = 'willcotech-apartment'
   s.version = Apartment::VERSION
 
   s.authors       = ['Ryan Brunner', 'Brad Robertson', 'Rui Baltazar']

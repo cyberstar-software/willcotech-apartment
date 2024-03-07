@@ -1,6 +1,6 @@
 # Apartment
 
-[![Gem Version](https://badge.fury.io/rb/ros-apartment.svg)](https://badge.fury.io/rb/apartment)
+[![Gem Version](https://badge.fury.io/rb/willcotech-apartment.svg)](https://badge.fury.io/rb/apartment)
 [![Code Climate](https://api.codeclimate.com/v1/badges/b0dc327380bb8438f991/maintainability)](https://codeclimate.com/github/rails-on-services/apartment/maintainability)
 [![Build Status](https://travis-ci.org/rails-on-services/apartment.svg?branch=development)](https://travis-ci.org/rails-on-services/apartment)
 
@@ -33,7 +33,7 @@ may find or proposing improvements to the gem itself. Feel free to reach out.
 Add the following to your Gemfile:
 
 ```ruby
-gem 'ros-apartment', require: 'apartment'
+gem 'willcotech-apartment', require: 'apartment'
 ```
 
 Then generate your `Apartment` config file using
@@ -303,14 +303,14 @@ When method is called, the schema is dropped and all data from itself will be lo
 
 #### Console methods
 
-`ros-apartment` console configures two helper methods:
+`willcotech-apartment` console configures two helper methods:
 1. `tenant_list` - list available tenants while using the console
 2. `st(tenant_name:String)` - Switches the context to the tenant name passed, if
 it exists.
 
 #### Custom printed prompt
 
-`ros-apartment` also has a custom prompt that gives a bit more information about
+`willcotech-apartment` also has a custom prompt that gives a bit more information about
 the context in which you're running. It shows the environment as well as the tenant
 that is currently switched to. In order for you to enable this, you need to require
 the custom console in your application.
