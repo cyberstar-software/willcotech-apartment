@@ -26,9 +26,9 @@ module ActiveStorage::SetBlob # :nodoc:
       # Note that this depends on the class Apartment::Elevators::Subdomain
       # matching the one we use in config/initializers/apartment.rb.
       tenant = Apartment::Elevators::Subdomain.new(nil).parse_tenant_name(request)
-      Apartment::Tenant.switch(tenant) do
-        @blob = blob_scope.find_signed!(params[:signed_blob_id] || params[:signed_id])
-      end
+      Apartment::Tenant.switch!(tenant)
+      @blob = blob_scope.find_signed!(params[:signed_blob_id] || params[:signed_id])
+
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       head :not_found
     end
