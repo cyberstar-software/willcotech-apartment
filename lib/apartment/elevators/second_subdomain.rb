@@ -10,8 +10,8 @@ module Apartment
     #     - example1.domain.com               => domain
     #     - example2.something.domain.com     => something
     class SecondSubdomain < Subdomain
-      def parse_tenant_name(request)
-        super.split('.')[1] unless super.nil?
+      def subdomain(host)
+        subdomains(host).second
       end
     end
   end
