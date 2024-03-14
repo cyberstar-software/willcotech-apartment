@@ -23,12 +23,17 @@ module ActiveStorage::SetBlob # :nodoc:
       # a Rack application, but we only need the method to extract the tenant
       # from the request, so we just need a placholder for the app (nil).
       #
-      # Note that this depends on the class Apartment::Elevators::Subdomain
+      # Note that this depends on the class
       # matching the one we use in config/initializers/apartment.rb.
-      tenant = Apartment::Elevators::Subdomain.new(nil).parse_tenant_name(request)
-      Apartment::Tenant.switch(tenant) do
-        @blob = blob_scope.find_signed!(params[:signed_blob_id] || params[:signed_id])
+      if ENV["ENABLE_NEXTJS"]
+        tenant = Apartment::Elevators::SecondSubdomain.new(nil).parse_tenant_name(request)
+      else
+        tenant = Apartment::Elevators::Subdomain.new(nil).parse_tenant_name(request)  
       end
+      
+      Apartment::Tenant.switch!(tenant)
+      @blob = blob_scope.find_signed!(params[:signed_blob_id] || params[:signed_id])
+
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       head :not_found
     end
