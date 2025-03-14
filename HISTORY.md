@@ -1,3 +1,9 @@
+# v2.15.0
+
+**Implemented enhancements:**
+
+- Update to work with rails 7.1
+
 # v2.7.1
 
 **Implemented enhancements:**
