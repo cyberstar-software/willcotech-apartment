@@ -1,0 +1,32 @@
+name: Sonar Scan
+inputs:
+  sonarToken:
+    description: "Token for Sonar"
+    required: true
+  sonarHost:
+    description: "Host for Sonar"
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@1a6d90ebcb0e6a6b1d87e37ba693fe453195ae25
+      env:
+        SONAR_TOKEN: ${{ inputs.sonarToken }}
+        SONAR_HOST_URL: ${{ inputs.sonarHost }}
+      with:
+        args: >
+          -Dsonar.projectKey=willcotech-apartment
+          -Dsonar.sources=.
+          -Dsonar.sourceEncoding=UTF-8
+          -Dsonar.branch.name=${{ github.ref_name }}
+
+    - name: SonarQube Quality Gate check
+      id: sonarqube-quality-gate-check
+      uses: sonarsource/sonarqube-quality-gate-action@cf038b0e0cdecfa9e56c198bbb7d21d751d62c3b
+      with:
+        pollingTimeoutSec: 600
+      env:
+        SONAR_TOKEN: ${{ inputs.sonarToken }}
+        SONAR_HOST_URL: ${{ inputs.sonarHost }}
