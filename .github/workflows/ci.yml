@@ -1,0 +1,27 @@
+# WCCR: Copyright 2025 Cyberstar, All rights reserved. Confidential and Proprietary. Do not modify or copy these contents without prior consent from Cyberstar.
+name: cyberstar continuous integration
+
+on:
+  workflow_dispatch:
+  push
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lintAndTest:
+    name: Run Linters and Tests
+    runs-on: ubuntu-latest
+    services:
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8
+        with:
+          fetch-depth: 0
+#      - name: Lint and Test Apartment
+#        uses: ./.github/actions/lint-and-test-apartment
+      - name: Run Sonar
+        uses: ./.github/actions/sonar
+        with:
+          sonarHost: ${{ vars.SONAR_HOST }}
+          sonarToken: ${{ secrets.SONAR_TOKEN }}
