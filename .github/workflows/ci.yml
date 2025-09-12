@@ -3,7 +3,7 @@ name: cyberstar continuous integration
 
 on:
   workflow_dispatch:
-  push
+  push:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
