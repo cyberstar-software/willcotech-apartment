@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/rails-on-services/apartment'
   s.licenses = ['MIT']
 
-  s.add_dependency 'activerecord', '>= 5.0.0', '< 7.3'
+  s.add_dependency 'activerecord', '>= 7.2.2.2', '< 7.3'
   s.add_dependency 'parallel', '< 2.0'
   s.add_dependency 'public_suffix', '>= 2.0.5', '< 5.0' # TODO upgrade this to 6.0 at some point? 
   s.add_dependency 'rack', '>= 3.1.16', '< 3.3'
