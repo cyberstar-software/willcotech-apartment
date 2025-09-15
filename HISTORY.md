@@ -1,3 +1,9 @@
+# v2.16.0
+
+**Implemented enhancements:**
+
+- Update to work with rails 7.2
+
 # v2.15.0
 
 **Implemented enhancements:**
