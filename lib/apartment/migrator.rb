@@ -16,7 +16,7 @@ module Apartment
         if activerecord_below_5_2?
           ActiveRecord::Migrator.migrate(ActiveRecord::Migrator.migrations_paths, version, &migration_scope_block)
         else
-          ActiveRecord::Base.connection.migration_context.migrate(version, &migration_scope_block)
+          ActiveRecord::Base.connection.pool.migration_context.migrate(version, &migration_scope_block)
         end
       end
     end
@@ -27,7 +27,7 @@ module Apartment
         if activerecord_below_5_2?
           ActiveRecord::Migrator.run(direction, ActiveRecord::Migrator.migrations_paths, version)
         else
-          ActiveRecord::Base.connection.migration_context.run(direction, version)
+          ActiveRecord::Base.connection.pool.migration_context.run(direction, version)
         end
       end
     end
@@ -38,7 +38,7 @@ module Apartment
         if activerecord_below_5_2?
           ActiveRecord::Migrator.rollback(ActiveRecord::Migrator.migrations_paths, step)
         else
-          ActiveRecord::Base.connection.migration_context.rollback(step)
+          ActiveRecord::Base.connection.pool.migration_context.rollback(step)
         end
       end
     end
