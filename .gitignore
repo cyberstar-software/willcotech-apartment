@@ -13,3 +13,6 @@ cookbooks
 tmp
 spec/dummy/db/*.sqlite3
 .DS_Store
+
+# Claude Code scratch input (not version controlled)
+claude-input/
